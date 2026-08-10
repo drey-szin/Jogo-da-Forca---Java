@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Random;
 
-public class Categorias {
+public class Categoria {
     Random rand = new Random();
 
     String[] timesFutebolBrasileiro = {"flamengo", "fluminense", "vasco", "botafogo", "palmeiras", "gremio", "internacional", "cruzeiro", "bahia", "bragantino", "coritiba", "corinthians", "vitoria", "santos", "remo", "chapecoense"};

@@ -1,8 +1,7 @@
 package application;
 
-import entities.Categorias;
+import entities.Categoria;
 
-import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,7 +15,7 @@ public class Main {
         System.out.println("ESCOLHA QUAL CATEGORIA GOSTARIA DE JOGAR: \n 1- Times de Futebol Brasileiro \n 2- Marcas de Carros \n 3- Dinossauros");
         int escolha = sc.nextInt();
 
-        String palavra = sc.next(String.valueOf(Locale.Category.values()[escolha]));
+        String palavra = new Categoria().escolherCategoria(escolha);
 
         String erradas = "";
 
@@ -35,7 +34,7 @@ public class Main {
             int acertos = 0;
             while (i < palavra.length()) {
                 if (revelado[i]) {
-                    System.out.println(palavra.charAt(i) + ""); //charAt() utilizado para retornar o caractere (char) em uma posição (índice) específica de uma String
+                    System.out.print(palavra.charAt(i) + ""); //charAt() utilizado para retornar o caractere (char) em uma posição (índice) específica de uma String
                     acertos++; //incrementar se o usuario acertou
                 } else {
                     System.out.print("_");
