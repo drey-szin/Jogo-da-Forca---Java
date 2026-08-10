@@ -1,16 +1,27 @@
+package application;
+
+import entities.Categorias;
+
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
+        var sc = new Scanner(System.in);
+        var rand = new Random();
 
-        //Array das palavras que podem ser sorteadas
-        String[] palavras = {"flamengo", "libertadores", "ferrari", "audi", "bisao", "australopitecos", "diamante", "ben10", "casa", "jardim", "maça", "banana", "girassol", "orquidea", "advogado", "picanha", "alcatra", "esmeralda", "coxinha", "matematica", "tyranossauro", "mamute", "brasil", "alemanha", "deputado", "leitura", "anime", "manga", "naruto"};
-        String palavra = palavras[rand.nextInt(palavras.length)];
+        System.out.printf("BEM-VINDO AO JOGO DA VELHA");
+        System.out.println("ESCOLHA QUAL CATEGORIA GOSTARIA DE JOGAR: \n 1- Times de Futebol Brasileiro \n 2- Marcas de Carros \n 3- Dinossauros");
+        int escolha = sc.nextInt();
+
+        String palavra = sc.next(String.valueOf(Locale.Category.values()[escolha]));
+
         String erradas = "";
+
         int vidas = 6;
+
         boolean[] revelado = new boolean [palavra.length()];
         boolean vitoria = false;
 
