@@ -1,14 +1,17 @@
 package entities;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class JogoForca {
-    Scanner sc = new Scanner(System.in);
+     Scanner sc = new Scanner(System.in);
 
-    int vidas = 5;
-    String palavra;
-    String erradas = "";
-    boolean[] revelado;
+     private int vidas = 5;
+     private String palavra;
+     private String erradas = "";
+     private char letra;
+
+     private boolean[] revelado;
 
     boolean vitoria = false;
 
@@ -17,15 +20,32 @@ public class JogoForca {
         revelado = new boolean[palavra.length()];
 
         while (vidas > 0 && !vitoria) {
+
             System.out.println("\nVidas: " + vidas);
             if (!erradas.isEmpty()) {
                 System.out.println("Erradas: " + erradas);
             }
 
-            System.out.println("\nDigite uma letra: ");
+            System.out.print("\nDigite uma letra: ");
             String entrada = sc.next().toLowerCase();
-            char letra = entrada.charAt(0);
+            this.letra = entrada.charAt(0);
+
+            boolean achou = testarLetra(letra);
+
+            if(achou == true){
+                System.out.println(letra + " está na palavra");
+            } else {
+                vidas--;
+                erradas += letra + " ";
+                System.out.println(letra + " não está na palavra");
+            }
+            System.out.println(progressoPalavra());
+
+            if(isVitoria() == true){
+                vitoria = true;
+            }
         }
+        fimDeJogo();
     }
     public String progressoPalavra(){
         int i = 0;
@@ -45,30 +65,27 @@ public class JogoForca {
         boolean correta = true;
         int i = 0;
         while (i < revelado.length) {
-            if(revelado[i] == false) {
+            if(!revelado[i]) {
                 correta = false;
             }
             i++;
         }
         return correta;
     }
-    public void fimDeJogo() {
+    public boolean testarLetra(char letra) {
+        this.letra = letra;
         boolean achou = false;
         int j = 0;
         while (j < palavra.length()) {
-            if (palavra.charAt(j) == letra) {
+            if (palavra.charAt(j) == this.letra) {
                 revelado[j] = true;
                 achou = true;
             }
             j++;
         }
-        if (!achou && erradas.indexOf(letra) == -1) {
-            erradas += letra + " ";
-            vidas--;
-            System.out.println(letra + " não está na palavra");
-        } else if (achou) {
-            System.out.println(letra + " está na palavra");
-        }
+        return achou;
+    }
+    public void fimDeJogo() {
         if (vitoria) {
             System.out.println("Você venceu! A palavra era: " + palavra);
         } else {
