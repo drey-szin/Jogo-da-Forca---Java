@@ -39,7 +39,25 @@ src/
 - **`Categoria`**: encapsula as listas de palavras por categoria e a lógica de sorteio.
 - **`JogoForca`**: controla o estado da partida — tentativas de letras, contagem de vidas, verificação de vitória e exibição do progresso da palavra.
 
-## ▶️ Como executar
+## ⬇️ Baixando o executável (sem instalar Java)
+
+Na aba [Releases](../../releases) deste repositório você encontra uma versão pronta para jogar, sem precisar instalar o JDK.
+
+### Linux
+
+1. Baixe e extraia o arquivo `.zip` (ou `.tar.gz`) da versão Linux.
+2. Abra um terminal dentro da pasta extraída e rode:
+   ```bash
+   ./JogoDaForca/bin/JogoDaForca
+   ```
+
+> ⚠️ Importante: mantenha a pasta `JogoDaForca` inteira junto (não separe `bin` de `lib`), pois o executável depende dos arquivos ao redor para funcionar.
+
+### Windows
+
+Ainda não há uma versão empacotada para Windows nesta release — está nos planos! Por enquanto, quem estiver no Windows pode rodar o projeto a partir do código-fonte (veja a seção abaixo).
+
+## ▶️ Rodando a partir do código-fonte
 
 **Pré-requisitos:** ter o JDK instalado (Java 17+ recomendado, já que o projeto usa `switch` com expressão).
 
@@ -61,9 +79,11 @@ Ou simplesmente abra o projeto na sua IDE de preferência (IntelliJ IDEA, Eclips
 
 ## 🚀 Possíveis melhorias futuras
 
-- Adicionar mais categorias e palavras
-- Exibir um desenho ASCII da forca conforme as vidas diminuem
-- Permitir que o jogador digite a palavra inteira, não só letras
+- Interface gráfica (Swing), com a forca desenhada e letras clicáveis
+- Temporizador para cada rodada
+- Mais categorias e palavras
+- Opção de sortear a categoria aleatoriamente
+- Executável nativo também para Windows
 - Adicionar testes unitários para `JogoForca` e `Categoria`
 
 ## 📚 Sobre o projeto
